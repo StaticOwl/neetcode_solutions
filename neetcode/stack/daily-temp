@@ -1,0 +1,21 @@
+def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        res = [0]*len(temperatures)
+        # Brute Force (O(n^2) Solution):
+        # for i in range (0, len(temperatures)):
+        #     right = i+1
+        #     while (right<len(temperatures)):
+        #         if(temperatures[right] <= temperatures[i]):
+        #             right += 1
+        #         else:
+        #             res[i] = right - i
+        #             right = len(temperatures)
+
+        # Using Stack (O(n) Solution):
+        stack = []
+        for i in range (0, len(temperatures)):
+            while stack and temperatures[i] > temperatures[stack[-1]]:
+                idx = stack.pop()
+                res[idx] = i - idx
+            stack.append(i)
+
+        return res
