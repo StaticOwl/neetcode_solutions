@@ -1,7 +1,7 @@
 #takes O(n) space and linear time
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        target=len(nums) // 2
+        target=(len(nums)) // 2
         count = Counter(nums)
         for num, freq in count.items():
             if freq > target:
